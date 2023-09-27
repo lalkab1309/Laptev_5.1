@@ -1,20 +1,19 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include <iomanip>
 #include <numeric>
 #include <algorithm>
-using namespace std;
 
-void disp(const vector<double>& arr) {
+void disp(const std::vector<double>& arr) {
 
 	for (double x : arr) {
-		cout << fixed << setprecision(3) << x << " ";
+		std::cout << std::fixed << std::setprecision(3) << x << " ";
 	}
-	cout << endl;
+	std::cout << std::endl;
 
 }
 
-void add_element(vector<double>& arr, double &sum, double &avg) {
+void add_element(std::vector<double>& arr, double &sum, double &avg) {
 
 	sum = accumulate(arr.begin(), arr.end(), 0.0);
 	avg = sum / arr.size();
@@ -23,7 +22,7 @@ void add_element(vector<double>& arr, double &sum, double &avg) {
 
 }
 
-void rabotaSVektorom(vector<double>& arr, int n, double& avg) {
+void rabotaSVektorom(std::vector<double>& arr, int n, double& avg) {
 
 	int flag = 0;
 	for (int i = 0; i < arr.size(); i++) {
@@ -38,19 +37,19 @@ void rabotaSVektorom(vector<double>& arr, int n, double& avg) {
 
 }
 
-int menu(vector<double>& arr, int n, double &sum, double &avg) {
+int menu(std::vector<double>& arr, int n, double &sum, double &avg) {
 
 	int choice;
 	while (true) {
-		cin >> choice;
+		std::cin >> choice;
 		switch (choice) {
 		case 0:
 			return 0;
 		case 1:
 			double elem;
-			cin >> elem;
+			std::cin >> elem;
 			arr.push_back(elem);
-			cout << "+: " << arr.size() << endl;
+			std::cout << "+: " << arr.size() << std::endl;
 			disp(arr);
 			add_element(arr, sum, avg);
 			disp(arr);
@@ -60,7 +59,7 @@ int menu(vector<double>& arr, int n, double &sum, double &avg) {
 		case 2:
 			if (!arr.empty()) {
 				arr.pop_back();
-				cout << "-: " << arr.size() << endl;
+				std::cout << "-: " << arr.size() << std::endl;
 				disp(arr);
 				add_element(arr, sum, avg);
 				disp(arr);
@@ -68,11 +67,11 @@ int menu(vector<double>& arr, int n, double &sum, double &avg) {
 				disp(arr);	
 			}
 			else {
-				cout << "Массив пуст, удаление невозможно." << endl;
+				std::cout << "Массив пуст, удаление невозможно." << std::endl;
 			}
 			break;
 		default:
-			cout << "Неверный выбор действия. Попробуйте еще раз." << endl;
+			std::cout << "Неверный выбор действия. Попробуйте еще раз." << std::endl;
 		}
 	}
 
@@ -84,13 +83,13 @@ int main() {
 	double  sum = 0;
 	double avg = 0;
 	int n;
-	cin >> n;
-	vector<double> arr(n);
+	std::cin >> n;
+	std::vector<double> arr(n);
 	for (int i = 0; i < n; i++) {
-		cin >> arr[i];
+		std::cin >> arr[i];
 	}
 
-	cout << endl << n << endl;
+	std::cout << std::endl << n << std::endl;
 
 	disp(arr);
 	add_element(arr, sum, avg);
